@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "shivam1997*",
-    "database": "mart",
-    "host": "127.0.0.1",
+    "username": "uayavgzzmaeaaduj",
+    "password": "LKl7h8psVKnSvYB9YnQI",
+    "database": "bjtebek0lzj3zfbzopym",
+    "host": "bjtebek0lzj3zfbzopym-mysql.services.clever-cloud.com",
     "dialect": "mysql",
     "operatorsAliases": false
   },
