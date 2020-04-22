@@ -12,6 +12,7 @@ module.exports = {
         },
         name: Sequelize.STRING(30),
         price:Sequelize.INTEGER(7),
+        orderId:Sequelize.INTEGER(11),
       createdAt:Sequelize.DATE,
       updatedAt:Sequelize.DATE
     });
