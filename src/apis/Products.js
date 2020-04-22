@@ -2,6 +2,36 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/Product')
 
+const path = require('path')
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().getTime() + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
+
 router.get('/',async (req,res,next)=>{
   const userslist = []
   const users = await Product.findAll();
@@ -15,10 +45,12 @@ router.get('/',async (req,res,next)=>{
   res.send(userslist)
 })
 
-router.post('/', async (req,res,next)=>{
+router.post('/', upload.single('product_pic'),async (req,res,next)=>{
+  console.log(req.file);
   const user = await Product.create({
     name:req.body.name,
-    price:req.body.price
+    price:req.body.price,
+    orderId:req.body.orderId
   }).then((user)=>{
     res.json({
       created:true,

@@ -1,0 +1,82 @@
+const data = [{
+  "name": "DIPHENHYDRAMINE",
+  "price": 87.2596,
+  "orderId": 2
+}, {
+  "name": "Ibuprofen",
+  "price": 55.201,
+  "orderId": 6
+}, {
+  "name": "OCTINOXATE",
+  "price": 72.8309,
+  "orderId": 9
+}, {
+  "name": "Aluminum",
+  "price": 33.048,
+  "orderId": 4
+}, {
+  "name": "AIR",
+  "price": 55.0311,
+  "orderId": 5
+}, {
+  "name": "CALCAREA",
+  "price": 75.45,
+  "orderId": 6
+}, {
+  "name": "Naproxen",
+  "price": 85.3031,
+  "orderId": 7
+}, {
+  "name": "Glipizide",
+  "price": 45.1528,
+  "orderId": 24
+}, {
+  "name": "vigabatrin",
+  "price": 83.0242,
+  "orderId": 18
+}, {
+  "name": "piperonyl",
+  "price": 7.7999,
+  "orderId": 20
+}, {
+  "name": "Metronidazole",
+  "price": 46.0238,
+  "orderId": 33
+}, {
+  "name": "Groundsel",
+  "price": 47.4306,
+  "orderId": 12
+}, {
+  "name": "lansoprazole",
+  "price": 61.159,
+  "orderId": 13
+}, {
+  "name": "glipizide",
+  "price": 87.8959,
+  "orderId": 42
+}, {
+  "name": "acetaminophen",
+  "price": 83.6645,
+  "orderId": 15
+}, {
+  "name": "diphenhydramine",
+  "price": 20.7049,
+  "orderId": 16
+}, {
+  "name": "PANTOPRAZOLE",
+  "price": 84.543,
+  "orderId": 34
+}, {
+  "name": "diazepam",
+  "price": 16.5285,
+  "orderId": 54
+}, {
+  "name": "Erythropoietin",
+  "price": 92.847,
+  "orderId": 57
+}, {
+  "name": "TRICLOSAN",
+  "price": 75.8543,
+  "orderId": 40
+}]
+module.exports = data

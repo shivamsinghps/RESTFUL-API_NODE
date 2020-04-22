@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 app.use(cors())
+// app.use(express.static('uploads'))
 
 app.use('/products',productRoute)
 app.use('/orders',orderRoute)
