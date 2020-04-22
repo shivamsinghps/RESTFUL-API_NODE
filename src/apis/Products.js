@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Product = require('../models/Product')
+const checkAuth = require('../middleware/auth.js');
 
 const path = require('path')
 
@@ -45,7 +46,7 @@ router.get('/',async (req,res,next)=>{
   res.send(userslist)
 })
 
-router.post('/', upload.single('product_pic'),async (req,res,next)=>{
+router.post('/', checkAuth ,upload.single('product_pic'),async (req,res,next)=>{
   console.log(req.file);
   const user = await Product.create({
     name:req.body.name,
@@ -70,10 +71,13 @@ router.get('/:productId',(req,res,next)=>{
       res.json({
         name:user.name
       })
-    }).catch(err=>next(err))
+    }).catch(err=>{
+      let error = new Error('productId invalid: '+err.message)
+      error.status=409
+      next(error)})
   })
 
-router.patch('/:productId',(req,res,next)=>{
+router.patch('/:productId',checkAuth,(req,res,next)=>{
   const user =  Product.findOne({
         where: {
             id: req.params.productId,
@@ -92,20 +96,14 @@ router.patch('/:productId',(req,res,next)=>{
 })
   })
 
-router.delete('/:productId',(req,res,next)=>{
-  const user =  Product.findOne({
-        where: {
-            id: req.params.productId,
-        }
-    }).then((user)=>{
-      user.destroy().then(()=>{
-  res.send('deleted')
-})
-}).catch(err=>{
-  const error = new Error('Not a valid id')
-  error.status=403
-  next(error)
-})
+router.delete('/:productId',checkAuth,(req,res,next)=>{
+Product.destroy({
+  where:{
+    id:req.params.productId
+  }
+}).then((result)=>{
+  console.log(result+'ha');
+  res.send('done')})
   })
 
 module.exports = router
