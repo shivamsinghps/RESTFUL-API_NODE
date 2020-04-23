@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require("bcrypt")
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -22,7 +23,7 @@ module.exports = {
       },
       createdAt:Sequelize.DATE,
       updatedAt:Sequelize.DATE,
-     });
+    });
 
   },
 

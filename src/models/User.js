@@ -2,6 +2,8 @@ const db = require('../database/connection'),
   sequelize = db.sequelize,
   Sequelize = db.Sequelize;
 
+const bcrypt = require("bcrypt")
+
 module.exports = sequelize.define("user", {
   id: {
     type: Sequelize.INTEGER(11),
@@ -16,8 +18,9 @@ module.exports = sequelize.define("user", {
     unique: true
   },
   password:{
-    type:Sequelize.STRING(100),
+    type:Sequelize.STRING(00),
     allowNull:false,
 
   }
-});
+}
+       );
