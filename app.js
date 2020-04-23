@@ -5,6 +5,7 @@ const userRoute = require('./src/apis/Users')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const limit = require('./src/middleware/rate_limiter.js')
 
 app = express()
 
@@ -16,6 +17,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static('uploads'))
 
+
+app.use(limit)
 app.use('/users',userRoute)
 app.use('/products',productRoute)
 app.use('/orders',orderRoute)
